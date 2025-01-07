@@ -155,7 +155,12 @@ def print_duplicates(duplicates: list[list[str]]):
     Returns:
         None
     """
-    raise NotImplementedError()
+    for files in duplicates:
+        print("Found duplicate files:")
+        size = get_file_size(files[0])
+        print("Size: ", file_size_string(size))
+        for file in files:
+            print(file)
 
 
 def check_for_duplicates(paths: list[str]):
@@ -323,4 +328,3 @@ def test_file_size_string():
     assert file_size_string(1500000) == "1.50MB"
     assert file_size_string(2000000000) == "2.00GB"
     assert file_size_string(2500000000000) == "2.50TB"
-
