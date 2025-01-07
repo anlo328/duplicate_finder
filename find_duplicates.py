@@ -147,9 +147,13 @@ def file_size_string(num_bytes: int) -> str:
     Returns:
         None
     """
-    sizes = ["B", "KB", "MB", "GB", "TB", "PB", "EB", "ZB", "YB"]
     # Run "pytest find_duplicates.py -k file_size_string" to test your implementation
-    raise NotImplementedError()
+    sizes = ["B", "KB", "MB", "GB", "TB", "PB", "EB", "ZB", "YB"]
+    if num_bytes == 0:
+        return "0B"
+    idx = int(math.floor(math.log(num_bytes, 1000)))
+    size = num_bytes / math.pow(1000, idx)
+    return f"{size:.2f}{sizes[idx]}"
 
 
 def print_duplicates(duplicates: list[list[str]]):
